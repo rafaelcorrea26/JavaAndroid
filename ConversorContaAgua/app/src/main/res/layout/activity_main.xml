@@ -1,97 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="8dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/digite_o_valor_total_da_gua_sem_taxa_servico" />
+        android:layout_marginTop="1dp"
+        android:text="@string/digite_o_valor_total_da_gua_sem_taxa_servico"
+        android:textSize="17sp" />
 
     <EditText
-        android:id="@+id/editValorAguaSemTaxaServico"
+        android:id="@+id/edit_ValorAguaSemTaxaServico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:inputType="numberSigned|numberDecimal"
+        android:text=""
+        android:textSize="17sp" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/digite_o_consumo_por_metro" />
+        android:text="@string/digite_o_consumo_por_metro"
+        android:textSize="17sp" />
 
     <EditText
         android:id="@+id/edit_ValorConsumoPorMetro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text=""
+        android:textSize="17sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/digite_valor_da_taxa_de_servico" />
+        android:text="@string/digite_valor_da_taxa_de_servico"
+        android:textSize="17sp" />
 
     <EditText
         android:id="@+id/edit_ValorTaxaServico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:inputType="numberSigned|numberDecimal"
+        android:text=""
+        android:textSize="17sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/digite_o_valor_utilizado_no_mes_passado" />
+        android:text="@string/digite_o_valor_utilizado_no_mes_passado"
+        android:textSize="17sp" />
 
     <EditText
         android:id="@+id/edit_ValorUtilizadoMesPassado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:inputType="numberSigned|numberDecimal"
+        android:text=""
+        android:textSize="17sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/digite_o_valor_utilizado_nesse_mes" />
+        android:text="@string/digite_o_valor_utilizado_nesse_mes"
+        android:textSize="17sp" />
 
     <EditText
         android:id="@+id/edit_ValorUtilizadoEsteMes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:inputType="numberSigned|numberDecimal"
+        android:text=""
+        android:textSize="17sp" />
 
     <Button
-        android:id="@+id/buttonCalcular"
+        android:id="@+id/button_Calcular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/calcular" />
+        android:layout_marginTop="10dp"
+        android:background="@color/colorAccent"
+        android:onClick="CalcularValorAgua"
+        android:text="@string/calcular"
+        android:textColor="@color/colorLigth"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/text_TotalDividoEntre2Casas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/taxa_dividida_entre_as_2_casas" />
+        android:layout_marginTop="20dp"
+        android:text="@string/taxa_dividida_entre_as_2_casas"
+        android:textSize="17sp" />
 
     <TextView
-        android:id="@+id/textTotalUtilizadoEsteMes"
+        android:id="@+id/text_TotalUtilizadoEsteMes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/total_utilizado_este_mes" />
+        android:layout_marginTop="2dp"
+        android:text="@string/total_utilizado_este_mes"
+        android:textSize="17sp" />
 
     <TextView
-        android:id="@+id/textTotalPorMetroUtilizado"
+        android:id="@+id/text_TotalPorMetroUtilizado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/total_em_reais_por_metro_utilizado" />
+        android:layout_marginTop="2dp"
+        android:text="@string/total_em_reais_por_metro_utilizado"
+        android:textSize="17sp" />
 
     <TextView
-        android:id="@+id/textTotalPagarPeloUsuario"
+        android:id="@+id/text_TotalPagarPeloUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/total_a_pagar_pelo_usuario" />
+        android:layout_marginTop="2dp"
+        android:text="@string/total_a_pagar_pelo_usuario"
+        android:textSize="17sp" />
 
 
 </LinearLayout>
