@@ -4,14 +4,36 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ViewHolder mViewHolder = new ViewHolder();
+    private Double ValorTotalAgua;
+    private Double ConsumoPorMetro;
+    private Double ValorTaxaDeServico;
+    private Double ValorUtilizadoMesPassado;
+    private Double ValorUtilizadoEsteMes;
+    private Double TaxaDivida;
+    private Double TotalMetrosUtilizado;
+    private Double TotalPorMetro;
+    private Double TotalAPagarPorMes;
+    private String DataAgua;
+    private CadastroContaAguaDAO dao;
+
 
     public Double CalcularTotalPorMetro(Double ValorAgua, Double ConsumoPorMetro) {
         return ValorAgua / ConsumoPorMetro;
@@ -26,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         return TotalUtilizado * TotalPorMetro + TaxaServicoDividida;
     }
 
+    public void hideSoftKeyboard() {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 
     private void clearValues() {
         this.mViewHolder.textTotalDividoEntre2Casas.setText("");
@@ -33,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         this.mViewHolder.textTotalPorMetroUtilizado.setText("");
         this.mViewHolder.textTotalPagarPeloUsuario.setText("");
     }
+
 
     private String CheckEditIsEmpty() {
 
@@ -53,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return "";
         }
-
-
     }
 
 
@@ -62,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dao = new CadastroContaAguaDAO(this);
 
         this.mViewHolder.editValorAguaSemTaxaServico = findViewById(R.id.edit_ValorAguaSemTaxaServico);
         this.mViewHolder.editValorConsumoPorMetro = findViewById(R.id.edit_ValorConsumoPorMetro);
@@ -76,16 +105,57 @@ public class MainActivity extends AppCompatActivity {
 
         this.mViewHolder.buttonCalcular = findViewById(R.id.button_Calcular);
 
+        this.mViewHolder.spinnerMes = findViewById(R.id.spinner_mes);
+        String spinnerArray[] = {"Janeiro", "Fevereiro","Março","Abril","Maio","Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+
+        ArrayAdapter<String> spinnAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        spinnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.mViewHolder.spinnerMes.setAdapter(spinnAdapter);
+        this.mViewHolder.spinnerMes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                DataAgua = parent.getItemAtPosition(position).toString();
+                Toast.makeText(parent.getContext(), DataAgua, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                DataAgua = parent.getItemAtPosition(0).toString();
+                Toast.makeText(parent.getContext(), DataAgua, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         this.clearValues();
 
 
     }
 
+
+    public void Salvar() {
+
+        CadastroContaAgua c = new CadastroContaAgua();
+        c.setValorTotalAgua(ValorTotalAgua);
+        c.setConsumoPorMetro(ConsumoPorMetro);
+        c.setValorTaxaDeServico(ValorTaxaDeServico);
+        c.setValorUtilizadoMesPassado(ValorUtilizadoMesPassado);
+        c.setValorUtilizadoEsteMes(ValorUtilizadoEsteMes);
+        c.setTaxaDivida(TaxaDivida);
+        c.setTotalMetrosUtilizado(TotalMetrosUtilizado);
+        c.setTotalPorMetro(TotalPorMetro);
+        c.setTotalAPagarPorMes(TotalAPagarPorMes);
+        c.setDataAgua(DataAgua);
+
+        dao.inserir(c);
+        long id = dao.inserir(c);
+        Toast.makeText(this, "Cadastro inserido com id: " + id, Toast.LENGTH_SHORT).show();
+    }
+
+
     public void CalcularValorAgua(View view) {
         String editEmpty;
-        Double ValorAgua, ConsumoMetro, EsteMes, MesPassado, TaxaInteira;
-        Double TaxaDividida, TotalPorMetro, TotalAgua;
-        Double TotalUtilizado;
+
 
         editEmpty = CheckEditIsEmpty();
 
@@ -94,28 +164,39 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, editEmpty, Toast.LENGTH_LONG).show();
 
         } else {
-            EsteMes = Double.parseDouble(this.mViewHolder.editValorUtilizadoEsteMes.getText().toString());
-            MesPassado = Double.parseDouble(this.mViewHolder.editValorUtilizadoMesPassado.getText().toString());
-            ValorAgua = Double.parseDouble(this.mViewHolder.editValorAguaSemTaxaServico.getText().toString());
-            ConsumoMetro = Double.parseDouble(this.mViewHolder.editValorConsumoPorMetro.getText().toString());
-            TaxaInteira = Double.parseDouble(this.mViewHolder.editValorTaxaServico.getText().toString());
-
-            TotalUtilizado = EsteMes - MesPassado;
-            TaxaDividida = CalcularTaxaParaCadaUm(TaxaInteira);
-            TotalPorMetro = CalcularTotalPorMetro(ValorAgua, ConsumoMetro);
-            TotalAgua = CalcularTotalAPagar(TotalUtilizado, TaxaDividida, TotalPorMetro);
+            ValorUtilizadoEsteMes = Double.parseDouble(this.mViewHolder.editValorUtilizadoEsteMes.getText().toString());
+            ValorUtilizadoMesPassado = Double.parseDouble(this.mViewHolder.editValorUtilizadoMesPassado.getText().toString());
+            ValorTotalAgua = Double.parseDouble(this.mViewHolder.editValorAguaSemTaxaServico.getText().toString());
+            ConsumoPorMetro = Double.parseDouble(this.mViewHolder.editValorConsumoPorMetro.getText().toString());
+            ValorTaxaDeServico = Double.parseDouble(this.mViewHolder.editValorTaxaServico.getText().toString());
 
 
-            this.mViewHolder.textTotalDividoEntre2Casas.setText("Taxa dividida entre as 2 casas:  R$" +String.format( "%.2f" , TaxaDividida)+" reais.");
-            this.mViewHolder.textTotalUtilizadoEsteMes.setText(String.format( "Total utilizado este mês:  " + String.format( "%.2f" ,TotalUtilizado)+" metros."));
-            this.mViewHolder.textTotalPorMetroUtilizado.setText(String.format( "Total por metro utilizado:  R$" +String.format( "%.2f" , TotalPorMetro)+" reais."));
-            this.mViewHolder.textTotalPagarPeloUsuario.setText(String.format("Total a pagar pelo usuario:  R$" + TotalAgua)+" reais.");
+
+            TotalMetrosUtilizado = ValorUtilizadoEsteMes - ValorUtilizadoMesPassado;
+            TaxaDivida = CalcularTaxaParaCadaUm(ValorTaxaDeServico);
+            TotalPorMetro = CalcularTotalPorMetro(ValorTotalAgua, ConsumoPorMetro);
+            TotalAPagarPorMes = CalcularTotalAPagar(TotalMetrosUtilizado, TaxaDivida, TotalPorMetro);
+
+
+            this.mViewHolder.textTotalDividoEntre2Casas.setText("Taxa dividida entre as 2 casas:  R$" + String.format("%.2f", TaxaDivida) + " reais.");
+            this.mViewHolder.textTotalUtilizadoEsteMes.setText(String.format("Total utilizado este mês:  " + String.format("%.2f", TotalMetrosUtilizado) + " metros."));
+            this.mViewHolder.textTotalPorMetroUtilizado.setText(String.format("Total por metro utilizado:  R$" + String.format("%.2f", TotalPorMetro) + " reais."));
+            this.mViewHolder.textTotalPagarPeloUsuario.setText(String.format("Total a pagar pelo usuario:  R$" + String.format("%.2f", TotalAPagarPorMes) + " reais."));
+            hideSoftKeyboard();
+
+
+
+            Salvar();
+
+
 
         }
     }
 
 
+
     private static class ViewHolder {
+        Spinner spinnerMes;
         EditText editValorAguaSemTaxaServico;
         EditText editValorConsumoPorMetro;
         EditText editValorTaxaServico;

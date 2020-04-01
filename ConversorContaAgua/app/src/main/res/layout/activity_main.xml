@@ -8,10 +8,16 @@
     tools:context=".MainActivity">
 
 
+    <Spinner
+        android:id="@+id/spinner_mes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/meses"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="20dp"
         android:text="@string/digite_o_valor_total_da_gua_sem_taxa_servico"
         android:textSize="17sp" />
 
@@ -34,6 +40,7 @@
         android:id="@+id/edit_ValorConsumoPorMetro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="numberSigned|numberDecimal"
         android:text=""
         android:textSize="17sp" />
 
@@ -121,6 +128,8 @@
         android:layout_marginTop="2dp"
         android:text="@string/total_a_pagar_pelo_usuario"
         android:textSize="17sp" />
+
+
 
 
 </LinearLayout>
