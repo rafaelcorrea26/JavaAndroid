@@ -17,6 +17,7 @@ public class CadastroContaAguaDAO {
 
     public long inserir(CadastroContaAgua cadastrocontaagua) {
         ContentValues values = new ContentValues();
+
         values.put("ValorTotalAgua", cadastrocontaagua.getValorTotalAgua());
         values.put("ConsumoPorMetro", cadastrocontaagua.getConsumoPorMetro());
         values.put("ValorTaxaDeServico", cadastrocontaagua.getValorTaxaDeServico());
@@ -28,7 +29,7 @@ public class CadastroContaAguaDAO {
         values.put("TotalPorMetro", cadastrocontaagua.getTotalPorMetro());
         values.put("TotalAPagarPorMes", cadastrocontaagua.getTotalAPagarPorMes());
         values.put("DataAgua", cadastrocontaagua.getDataAgua());
-       return banco.insert("CONTAAGUA",null,values);
+       return banco.insert("CONTAAGUA",null, values);
 
     }
 }

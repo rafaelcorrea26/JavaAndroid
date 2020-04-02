@@ -56,28 +56,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clearValues() {
-        this.mViewHolder.textTotalDividoEntre2Casas.setText("");
-        this.mViewHolder.textTotalUtilizadoEsteMes.setText("");
-        this.mViewHolder.textTotalPorMetroUtilizado.setText("");
-        this.mViewHolder.textTotalPagarPeloUsuario.setText("");
+        mViewHolder.textTotalDividoEntre2Casas.setText("");
+        mViewHolder.textTotalUtilizadoEsteMes.setText("");
+        mViewHolder.textTotalPorMetroUtilizado.setText("");
+        mViewHolder.textTotalPagarPeloUsuario.setText("");
     }
 
 
     private String CheckEditIsEmpty() {
 
-        if (this.mViewHolder.editValorAguaSemTaxaServico.getText().toString().equals("")) {
+        if (mViewHolder.editValorAguaSemTaxaServico.getText().toString().equals("")) {
             return "Valor da Agua não pode ser vazio, favor preencher antes do calculo";
 
-        } else if (this.mViewHolder.editValorConsumoPorMetro.getText().toString().equals("")) {
+        } else if (mViewHolder.editValorConsumoPorMetro.getText().toString().equals("")) {
             return "Total consumido por metro não pode ser vazio, favor preencher antes do calculo";
 
-        } else if (this.mViewHolder.editValorTaxaServico.getText().toString().equals("")) {
+        } else if (mViewHolder.editValorTaxaServico.getText().toString().equals("")) {
             return "Taxa de serviço não pode ser vazio, favor preencher antes do calculo";
 
-        } else if (this.mViewHolder.editValorUtilizadoMesPassado.getText().toString().equals("")) {
+        } else if (mViewHolder.editValorUtilizadoMesPassado.getText().toString().equals("")) {
             return "Total Utilizado mês  passado não pode ser vazio, favor preencher antes do calculo";
 
-        } else if (this.mViewHolder.editValorUtilizadoEsteMes.getText().toString().equals("")) {
+        } else if (mViewHolder.editValorUtilizadoEsteMes.getText().toString().equals("")) {
             return "Total Utilizado este mês não pode ser vazio, favor preencher antes do calculo";
         } else {
             return "";
@@ -92,27 +92,28 @@ public class MainActivity extends AppCompatActivity {
 
         dao = new CadastroContaAguaDAO(this);
 
-        this.mViewHolder.editValorAguaSemTaxaServico = findViewById(R.id.edit_ValorAguaSemTaxaServico);
-        this.mViewHolder.editValorConsumoPorMetro = findViewById(R.id.edit_ValorConsumoPorMetro);
-        this.mViewHolder.editValorTaxaServico = findViewById(R.id.edit_ValorTaxaServico);
-        this.mViewHolder.editValorUtilizadoMesPassado = findViewById(R.id.edit_ValorUtilizadoMesPassado);
-        this.mViewHolder.editValorUtilizadoEsteMes = findViewById(R.id.edit_ValorUtilizadoEsteMes);
+        mViewHolder.editValorAguaSemTaxaServico = findViewById(R.id.edit_ValorAguaSemTaxaServico);
+        mViewHolder.editValorConsumoPorMetro = findViewById(R.id.edit_ValorConsumoPorMetro);
+        mViewHolder.editValorTaxaServico = findViewById(R.id.edit_ValorTaxaServico);
+        mViewHolder.editValorUtilizadoMesPassado = findViewById(R.id.edit_ValorUtilizadoMesPassado);
+        mViewHolder.editValorUtilizadoEsteMes = findViewById(R.id.edit_ValorUtilizadoEsteMes);
 
-        this.mViewHolder.textTotalDividoEntre2Casas = findViewById(R.id.text_TotalDividoEntre2Casas);
-        this.mViewHolder.textTotalUtilizadoEsteMes = findViewById(R.id.text_TotalUtilizadoEsteMes);
-        this.mViewHolder.textTotalPorMetroUtilizado = findViewById(R.id.text_TotalPorMetroUtilizado);
-        this.mViewHolder.textTotalPagarPeloUsuario = findViewById(R.id.text_TotalPagarPeloUsuario);
+        mViewHolder.textTotalDividoEntre2Casas = findViewById(R.id.text_TotalDividoEntre2Casas);
+        mViewHolder.textTotalUtilizadoEsteMes = findViewById(R.id.text_TotalUtilizadoEsteMes);
+        mViewHolder.textTotalPorMetroUtilizado = findViewById(R.id.text_TotalPorMetroUtilizado);
+        mViewHolder.textTotalPagarPeloUsuario = findViewById(R.id.text_TotalPagarPeloUsuario);
 
-        this.mViewHolder.buttonCalcular = findViewById(R.id.button_Calcular);
+        mViewHolder.buttonCalcular = findViewById(R.id.button_Calcular);
 
-        this.mViewHolder.spinnerMes = findViewById(R.id.spinner_mes);
-        String spinnerArray[] = {"Janeiro", "Fevereiro","Março","Abril","Maio","Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+        mViewHolder.spinnerMes = findViewById(R.id.spinner_mes);
+
+        String spinnerArray[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
 
         ArrayAdapter<String> spinnAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
 
         spinnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.mViewHolder.spinnerMes.setAdapter(spinnAdapter);
-        this.mViewHolder.spinnerMes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mViewHolder.spinnerMes.setAdapter(spinnAdapter);
+        mViewHolder.spinnerMes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 DataAgua = parent.getItemAtPosition(position).toString();
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        this.clearValues();
+        clearValues();
 
 
     }
@@ -147,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
         c.setTotalAPagarPorMes(TotalAPagarPorMes);
         c.setDataAgua(DataAgua);
 
-        dao.inserir(c);
         long id = dao.inserir(c);
         Toast.makeText(this, "Cadastro inserido com id: " + id, Toast.LENGTH_SHORT).show();
     }
@@ -164,12 +164,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, editEmpty, Toast.LENGTH_LONG).show();
 
         } else {
-            ValorUtilizadoEsteMes = Double.parseDouble(this.mViewHolder.editValorUtilizadoEsteMes.getText().toString());
-            ValorUtilizadoMesPassado = Double.parseDouble(this.mViewHolder.editValorUtilizadoMesPassado.getText().toString());
-            ValorTotalAgua = Double.parseDouble(this.mViewHolder.editValorAguaSemTaxaServico.getText().toString());
-            ConsumoPorMetro = Double.parseDouble(this.mViewHolder.editValorConsumoPorMetro.getText().toString());
-            ValorTaxaDeServico = Double.parseDouble(this.mViewHolder.editValorTaxaServico.getText().toString());
-
+            ValorUtilizadoEsteMes = Double.parseDouble(mViewHolder.editValorUtilizadoEsteMes.getText().toString());
+            ValorUtilizadoMesPassado = Double.parseDouble(mViewHolder.editValorUtilizadoMesPassado.getText().toString());
+            ValorTotalAgua = Double.parseDouble(mViewHolder.editValorAguaSemTaxaServico.getText().toString());
+            ConsumoPorMetro = Double.parseDouble(mViewHolder.editValorConsumoPorMetro.getText().toString());
+            ValorTaxaDeServico = Double.parseDouble(mViewHolder.editValorTaxaServico.getText().toString());
 
 
             TotalMetrosUtilizado = ValorUtilizadoEsteMes - ValorUtilizadoMesPassado;
@@ -178,21 +177,18 @@ public class MainActivity extends AppCompatActivity {
             TotalAPagarPorMes = CalcularTotalAPagar(TotalMetrosUtilizado, TaxaDivida, TotalPorMetro);
 
 
-            this.mViewHolder.textTotalDividoEntre2Casas.setText("Taxa dividida entre as 2 casas:  R$" + String.format("%.2f", TaxaDivida) + " reais.");
-            this.mViewHolder.textTotalUtilizadoEsteMes.setText(String.format("Total utilizado este mês:  " + String.format("%.2f", TotalMetrosUtilizado) + " metros."));
-            this.mViewHolder.textTotalPorMetroUtilizado.setText(String.format("Total por metro utilizado:  R$" + String.format("%.2f", TotalPorMetro) + " reais."));
-            this.mViewHolder.textTotalPagarPeloUsuario.setText(String.format("Total a pagar pelo usuario:  R$" + String.format("%.2f", TotalAPagarPorMes) + " reais."));
+            mViewHolder.textTotalDividoEntre2Casas.setText("Taxa dividida entre as 2 casas:  R$" + String.format("%.2f", TaxaDivida) + " reais.");
+            mViewHolder.textTotalUtilizadoEsteMes.setText(String.format("Total utilizado este mês:  " + String.format("%.2f", TotalMetrosUtilizado) + " metros."));
+            mViewHolder.textTotalPorMetroUtilizado.setText(String.format("Total por metro utilizado:  R$" + String.format("%.2f", TotalPorMetro) + " reais."));
+            mViewHolder.textTotalPagarPeloUsuario.setText(String.format("Total a pagar pelo usuario:  R$" + String.format("%.2f", TotalAPagarPorMes) + " reais."));
             hideSoftKeyboard();
-
 
 
             Salvar();
 
 
-
         }
     }
-
 
 
     private static class ViewHolder {

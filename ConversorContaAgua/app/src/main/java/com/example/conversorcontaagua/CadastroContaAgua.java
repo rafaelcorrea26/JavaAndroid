@@ -1,8 +1,9 @@
 package com.example.conversorcontaagua;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CadastroContaAgua {
+public class CadastroContaAgua implements Serializable {
     private Integer ID;
     private Double ValorTotalAgua;
     private Double ConsumoPorMetro;
@@ -15,13 +16,7 @@ public class CadastroContaAgua {
     private Double TotalAPagarPorMes;
     private String DataAgua;
 
-    public String getDataAgua() {
-        return DataAgua;
-    }
 
-    public void setDataAgua(String dataAgua) {
-        DataAgua = dataAgua;
-    }
 
     public Integer getID() {
         return ID;
@@ -101,6 +96,14 @@ public class CadastroContaAgua {
 
     public void setTotalAPagarPorMes(Double totalAPagarPorMes) {
         TotalAPagarPorMes = totalAPagarPorMes;
+    }
+
+    public String getDataAgua() {
+        return DataAgua;
+    }
+
+    public void setDataAgua(String dataAgua) {
+        DataAgua = dataAgua;
     }
 
 
