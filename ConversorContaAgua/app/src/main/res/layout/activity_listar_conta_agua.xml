@@ -7,6 +7,7 @@
     tools:context=".VIEW.ListarContaAguaActivity">
 
     <ListView
+        android:id="@+id/lista_conta_agua"
         android:layout_width="409dp"
         android:layout_height="601dp"
         android:layout_marginStart="8dp"

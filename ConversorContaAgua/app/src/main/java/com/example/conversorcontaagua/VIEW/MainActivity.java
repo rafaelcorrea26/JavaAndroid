@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private String DataAgua;
     private CadastroContaAguaSQL dao;
 
-
     public Double CalcularTotalPorMetro(Double ValorAgua, Double ConsumoPorMetro) {
         return ValorAgua / ConsumoPorMetro;
     }
@@ -178,7 +177,6 @@ public class MainActivity extends AppCompatActivity {
             mViewHolder.textTotalPorMetroUtilizado.setText(String.format("Total por metro utilizado:  R$" + String.format("%.2f", TotalPorMetro) + " reais."));
             mViewHolder.textTotalPagarPeloUsuario.setText(String.format("Total a pagar pelo usuario:  R$" + String.format("%.2f", TotalAPagarPorMes) + " reais."));
             hideSoftKeyboard();
-
 
             Salvar();
 
