@@ -23,16 +23,13 @@ public class Conexao extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE  " +
                 cadastroContaAguaDB.getTabelaMovimentacao() + "(" +
                 cadastroContaAguaDB.getColunaId() + " integer NOT NULL PRIMARY KEY AUTOINCREMENT, " +
-                cadastroContaAguaDB.getCOLUNA_ValorTotalAgua() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_ConsumoPorMetro() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_ValorTaxaDeServico() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_ValorUtilizadoMesPassado() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_ValorUtilizadoEsteMes() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_TaxaDivida() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_TotalMetrosUtilizado() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_TotalPorMetro() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_TotalAPagarPorMes() + " Numeric(15,4), " +
-                cadastroContaAguaDB.getCOLUNA_DataAgua() + " varchar(20) )");
+                cadastroContaAguaDB.getCOLUNA_Valor() + " Numeric(15,4), " +
+                cadastroContaAguaDB.getCOLUNA_TIPOCONTA() + " Numeric(15,4), " +
+                cadastroContaAguaDB.getCOLUNA_EMISSAO() + " Numeric(15,4), " +
+                cadastroContaAguaDB.getCOLUNA_PAGAMENTO() + " Numeric(15,4), " +
+                cadastroContaAguaDB.getCOLUNA_VENCIMENTO() + " Numeric(15,4), " +
+                cadastroContaAguaDB.getCOLUNA_PARCELAS() + " Numeric(15,4), " +
+                cadastroContaAguaDB.getCOLUNA_MOVIMENTACAO() + " varchar(20) )");
     }
 
     @Override
