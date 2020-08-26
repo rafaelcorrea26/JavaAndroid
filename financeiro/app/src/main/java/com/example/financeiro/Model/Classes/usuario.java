@@ -1,4 +1,4 @@
-package com.example.financeiro.Classes;
+package com.example.financeiro.Model.Classes;
 
 import java.util.Date;
 

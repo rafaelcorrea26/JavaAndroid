@@ -1,6 +1,6 @@
-package com.example.conversorcontaagua.DAO;
+package com.example.financeiro.Model.Classes;
 
-public class CadastroContaAguaDB {
+public class movimentacaoDB {
     private static final String TABELA_CONTAAGUA = "TBL_CONTAAGUA";
     private static final String COLUNA_ID = "ID";
     private static final String COLUNA_ValorTotalAgua = "ValorTotalAgua";
@@ -68,7 +68,7 @@ public class CadastroContaAguaDB {
 
         return COLUNA_DataAgua;
     }
-    public  CadastroContaAguaDB(){
+    public movimentacaoDB(){
 
     };
 
