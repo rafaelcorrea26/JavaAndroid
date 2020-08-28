@@ -1,73 +1,48 @@
 package com.example.financeiro.Model.Classes;
 
 public class movimentacaoDB {
-    private static final String TABELA_CONTAAGUA = "TBL_CONTAAGUA";
+    private static final String TABELA_MOVIMENTACAO = "TBL_MOVIMENTACAO";
     private static final String COLUNA_ID = "ID";
-    private static final String COLUNA_ValorTotalAgua = "ValorTotalAgua";
-    private static final String COLUNA_ConsumoPorMetro = "ConsumoPorMetro";
-    private static final String COLUNA_ValorTaxaDeServico = "ValorTaxaDeServico";
-    private static final String COLUNA_ValorUtilizadoMesPassado = "ValorUtilizadoMesPassado";
-    private static final String COLUNA_ValorUtilizadoEsteMes = "ValorUtilizadoEsteMes";
-    private static final String COLUNA_TaxaDivida = "TaxaDivida";
-    private static final String COLUNA_TotalMetrosUtilizado = "TotalMetrosUtilizado";
-    private static final String COLUNA_TotalPorMetro = "TotalPorMetro";
-    private static final String COLUNA_TotalAPagarPorMes = "TotalAPagarPorMes";
-    private static final String COLUNA_DataAgua = "DataAgua";
+    private static final String COLUNA_TIPOCONTA = "TIPOCONTA";
+    private static final String COLUNA_EMISSAO = "EMISSAO";
+    private static final String COLUNA_VENCIMENTO= "VENCIMENTO";
+    private static final String COLUNA_PARCELAS = "PARCELAS";
+    private static final String COLUNA_MOVIMENTACAO = "MOVIMENTACAO";
+    private static final String COLUNA_VALOR = "VALOR";
+
+
+    public static String getTabelaMovimentacao() {
+        return TABELA_MOVIMENTACAO;
+    }
 
     public static String getColunaId() {
         return COLUNA_ID;
     }
 
-    public static String getCOLUNA_TotalPorMetro() {
-        return COLUNA_TotalPorMetro;
+    public static String getColunaTipoconta() {
+        return COLUNA_TIPOCONTA;
     }
 
-    public static String getCOLUNA_TotalAPagarPorMes() {
-        return COLUNA_TotalAPagarPorMes;
+    public static String getColunaEmissao() {
+        return COLUNA_EMISSAO;
     }
 
-    public  String getTabelaContaagua() {
-        return TABELA_CONTAAGUA;
+    public static String getColunaVencimento() {
+        return COLUNA_VENCIMENTO;
     }
 
-    public  String getCOLUNA_ValorTotalAgua() {
-
-        return COLUNA_ValorTotalAgua;
+    public static String getColunaParcelas() {
+        return COLUNA_PARCELAS;
     }
 
-    public  String getCOLUNA_ConsumoPorMetro() {
-
-        return COLUNA_ConsumoPorMetro;
+    public static String getColunaMovimentacao() {
+        return COLUNA_MOVIMENTACAO;
     }
 
-    public  String getCOLUNA_ValorTaxaDeServico() {
-
-        return COLUNA_ValorTaxaDeServico;
+    public static String getColunaValor() {
+        return COLUNA_VALOR;
     }
 
-    public  String getCOLUNA_ValorUtilizadoMesPassado() {
-
-        return COLUNA_ValorUtilizadoMesPassado;
-    }
-
-    public  String getCOLUNA_ValorUtilizadoEsteMes() {
-        return COLUNA_ValorUtilizadoEsteMes;
-    }
-
-    public  String getCOLUNA_TaxaDivida() {
-
-        return COLUNA_TaxaDivida;
-    }
-
-    public  String getCOLUNA_TotalMetrosUtilizado() {
-
-        return COLUNA_TotalMetrosUtilizado;
-    }
-
-    public String getCOLUNA_DataAgua() {
-
-        return COLUNA_DataAgua;
-    }
     public movimentacaoDB(){
 
     };
