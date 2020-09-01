@@ -1,39 +1,36 @@
-package com.example.financeiro.Model;
+package com.example.financeiro.MODEL.CLASSES;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.conversorcontaagua.Classes.CadastroContaAgua;
-import com.example.financeiro.Model.Classes.movimentacaoDB;
+import com.example.financeiro.MODEL.conexao;
+
 
 public class movimentacaoSQL {
 
-    private Conexao conexao;
+    private com.example.financeiro.MODEL.conexao conexao;
     private SQLiteDatabase banco;
 
     public movimentacaoSQL(Context context){
-        conexao = new Conexao(context);
+        conexao = new conexao(context);
         banco = conexao.getWritableDatabase();
 
     }
 
-    public long inserir(Movimentacao Movimentacao) {
+    public long inserir(movimentacao Movimentacao) {
         ContentValues values = new ContentValues();
         movimentacaoDB movimentacaoDB = new movimentacaoDB();
 
-        values.put(movimentacaoDB.getCOLUNA_ValorTotalAgua(), Movimentacao.getValorTotalAgua());
-        values.put(movimentacaoDB.getCOLUNA_ConsumoPorMetro(), Movimentacao.getConsumoPorMetro());
-        values.put(movimentacaoDB.getCOLUNA_ValorTaxaDeServico(), Movimentacao.getValorTaxaDeServico());
-        values.put(movimentacaoDB.getCOLUNA_ValorUtilizadoMesPassado(), Movimentacao.getValorUtilizadoMesPassado());
-        values.put(movimentacaoDB.getCOLUNA_ValorUtilizadoEsteMes(), Movimentacao.getValorUtilizadoEsteMes());
-        values.put(movimentacaoDB.getCOLUNA_TaxaDivida(), Movimentacao.getTaxaDivida());
-        values.put(movimentacaoDB.getCOLUNA_TotalMetrosUtilizado(), Movimentacao.getTotalMetrosUtilizado());
-        values.put(movimentacaoDB.getCOLUNA_TotalPorMetro(), Movimentacao.getTotalPorMetro());
-        values.put(movimentacaoDB.getCOLUNA_TotalAPagarPorMes(), Movimentacao.getTotalAPagarPorMes());
-        values.put(movimentacaoDB.getCOLUNA_DataAgua(), Movimentacao.getDataAgua());
+        values.put(movimentacaoDB.getColunaTipoconta(), Movimentacao.getTIPOCONTA());
+        values.put(movimentacaoDB.getColunaEmissao(), Movimentacao.getEMISSAO());
+        values.put(movimentacaoDB.getColunaVencimento(), Movimentacao.getVENCIMENTO());
+        values.put(movimentacaoDB.getColunaParcelas(), Movimentacao.getPARCELAS());
+        values.put(movimentacaoDB.getColunaMovimentacao(), Movimentacao.getMOVIMENTACAO());
+        values.put(movimentacaoDB.getColunaValor(), Movimentacao.getValor());
 
-        return banco.insert(movimentacaoDB.getTabelaContaagua(),null, values);
+
+        return banco.insert(movimentacaoDB.getTabelaMovimentacao(),null, values);
 
     }
 }

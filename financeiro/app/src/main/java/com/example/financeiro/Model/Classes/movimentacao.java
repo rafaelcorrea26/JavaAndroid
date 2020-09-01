@@ -1,4 +1,4 @@
-package com.example.financeiro.Model.Classes;
+package com.example.financeiro.MODEL.CLASSES;
 
 import java.util.Date;
 
@@ -8,9 +8,6 @@ public class movimentacao {
     private Date EMISSAO;
     private Date PAGAMENTO;
     private Date VENCIMENTO;
-    private int PARCELAS;
-    private String MOVIMENTACAO;
-    private Double Valor;
 
     public int getID() {
         return ID;
@@ -28,7 +25,7 @@ public class movimentacao {
         this.TIPOCONTA = TIPOCONTA;
     }
 
-    public Date getEMISSAO() {
+    public String getEMISSAO() {
         return EMISSAO;
     }
 
@@ -44,7 +41,7 @@ public class movimentacao {
         this.PAGAMENTO = PAGAMENTO;
     }
 
-    public Date getVENCIMENTO() {
+    public String getVENCIMENTO() {
         return VENCIMENTO;
     }
 
@@ -75,6 +72,10 @@ public class movimentacao {
     public void setValor(Double valor) {
         Valor = valor;
     }
+
+    private int PARCELAS;
+    private String MOVIMENTACAO;
+    private Double Valor;
 
 
 }

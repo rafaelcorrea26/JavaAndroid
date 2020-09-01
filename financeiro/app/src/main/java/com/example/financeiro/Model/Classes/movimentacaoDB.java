@@ -1,4 +1,4 @@
-package com.example.financeiro.Model.Classes;
+package com.example.financeiro.MODEL.CLASSES;
 
 public class movimentacaoDB {
     private static final String TABELA_MOVIMENTACAO = "TBL_MOVIMENTACAO";
