@@ -1,2 +1,2 @@
-rootProject.name='Financeiro'
+rootProject.name='financeiro'
 include ':app'
