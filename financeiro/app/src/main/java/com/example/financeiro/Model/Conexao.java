@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.financeiro.MODEL.CLASSES.movimentacaoDB;
+import com.example.financeiro.MODEL.CLASSES.usuarioDB;
 
 public class conexao extends SQLiteOpenHelper {
     private static final String name = "banco.db";
@@ -26,8 +27,19 @@ public class conexao extends SQLiteOpenHelper {
                 movimentacaoDB.getColunaEmissao() + " Text, " +
                 movimentacaoDB.getColunaVencimento() + " Text, " +
                 movimentacaoDB.getColunaParcelas() + " integer, " +
-                movimentacaoDB.getColunaMovimentacao() + " varchar(20), " +
+                movimentacaoDB.getColunaMovimentacao() + " Text " +
                 movimentacaoDB.getColunaValor() + " Numeric(15,4), ");
+
+
+        db.execSQL("CREATE TABLE  " +
+                usuarioDB.getTabelaUsuario() + "(" +
+                usuarioDB.getColunaId() + " integer NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                usuarioDB.getColunaNome() + " Text, " +
+                usuarioDB.getColunaLogin() + " Text, " +
+                usuarioDB.getColunaSenha() + " Text, " +
+                usuarioDB.getColunaEmail() + " Text, " +
+                usuarioDB.getColunaDataCad() + " Text,  ");
+
     }
 
     @Override

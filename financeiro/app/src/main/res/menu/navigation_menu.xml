@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/teste"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/app_name"/>
+
+    <item
+        android:id="@+id/teste1"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/app_name"/>
+
+    <item
+        android:id="@+id/teste2"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/app_name"/>
+
+    <item
+        android:id="@+id/teste3"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/app_name"/>
+
+    <item
+        android:id="@+id/teste4"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/app_name"/>
+
+
+</menu>

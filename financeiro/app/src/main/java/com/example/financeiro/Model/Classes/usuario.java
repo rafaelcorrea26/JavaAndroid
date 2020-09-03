@@ -5,9 +5,10 @@ import java.util.Date;
 public class usuario {
     private int ID;
     private String NOME;
+    private String LOGIN;
     private String SENHA;
     private String EMAIL;
-    private Date DATA_CAD;
+    private String DATA_CAD;
 
     public int getID() {
         return ID;
@@ -23,6 +24,14 @@ public class usuario {
 
     public void setNOME(String NOME) {
         this.NOME = NOME;
+    }
+
+    public String getLOGIN() {
+        return LOGIN;
+    }
+
+    public void setLOGIN(String LOGIN) {
+        this.LOGIN = LOGIN;
     }
 
     public String getSENHA() {
@@ -41,13 +50,14 @@ public class usuario {
         this.EMAIL = EMAIL;
     }
 
-    public Date getDATA_CAD() {
+    public String getDATA_CAD() {
         return DATA_CAD;
     }
 
-    public void setDATA_CAD(Date DATA_CAD) {
+    public void setDATA_CAD(String DATA_CAD) {
         this.DATA_CAD = DATA_CAD;
     }
+
 
 
 

@@ -18,16 +18,16 @@ public class movimentacaoSQL {
 
     }
 
-    public long inserir(movimentacao Movimentacao) {
+    public long inserir(movimentacao m) {
         ContentValues values = new ContentValues();
         movimentacaoDB movimentacaoDB = new movimentacaoDB();
 
-        values.put(movimentacaoDB.getColunaTipoconta(), Movimentacao.getTIPOCONTA());
-        values.put(movimentacaoDB.getColunaEmissao(), Movimentacao.getEMISSAO());
-        values.put(movimentacaoDB.getColunaVencimento(), Movimentacao.getVENCIMENTO());
-        values.put(movimentacaoDB.getColunaParcelas(), Movimentacao.getPARCELAS());
-        values.put(movimentacaoDB.getColunaMovimentacao(), Movimentacao.getMOVIMENTACAO());
-        values.put(movimentacaoDB.getColunaValor(), Movimentacao.getValor());
+        values.put(movimentacaoDB.getColunaTipoconta(), m.getTIPOCONTA());
+        values.put(movimentacaoDB.getColunaEmissao(), m.getEMISSAO());
+        values.put(movimentacaoDB.getColunaVencimento(), m.getVENCIMENTO());
+        values.put(movimentacaoDB.getColunaParcelas(), m.getPARCELAS());
+        values.put(movimentacaoDB.getColunaMovimentacao(), m.getMOVIMENTACAO());
+        values.put(movimentacaoDB.getColunaValor(), m.getValor());
 
 
         return banco.insert(movimentacaoDB.getTabelaMovimentacao(),null, values);
