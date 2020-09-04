@@ -4,16 +4,16 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.financeiro.MODEL.conexao;
+import com.example.financeiro.MODEL.Conexao;
 
 
 public class usuarioSQL {
 
-    private com.example.financeiro.MODEL.conexao conexao;
+    private Conexao conexao;
     private SQLiteDatabase banco;
 
     public usuarioSQL(Context context){
-        conexao = new conexao(context);
+        conexao = new Conexao(context);
         banco = conexao.getWritableDatabase();
 
     }

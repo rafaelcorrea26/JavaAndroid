@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.financeiro.MODEL.CLASSES.movimentacaoDB;
 import com.example.financeiro.MODEL.CLASSES.usuarioDB;
 
-public class conexao extends SQLiteOpenHelper {
+public class Conexao extends SQLiteOpenHelper {
     private static final String name = "banco.db";
     private static final int version = 1;
     com.example.financeiro.MODEL.CLASSES.movimentacaoDB movimentacaoDB = new movimentacaoDB();
 
-    public conexao(Context context) {
+    public Conexao(Context context) {
         super(context, name, null, version);
     }
 
