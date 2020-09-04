@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.example.financeiro.R;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                drawerLayout.openDrawer(GravityCompat.START);
+                drawerLayout.openDrawer(GravityCompat.START); }});
 
-                                                            }
-                                                        });
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        navigationView.setItemIconTintList(null); //para deixar colorido icones
 
     }
 }
