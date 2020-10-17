@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
 
         <LinearLayout
@@ -47,6 +48,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:backgroundTint="@color/colorPrimary"
             android:id="@+id/layoutTop"
             android:layout_width="match_parent"
             android:layout_height="140dp"
@@ -60,18 +62,18 @@
                 android:id="@+id/tvSaldoMes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
+                android:layout_marginStart="130dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/mes"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="50sp"
+                android:textSize="40sp"
                 android:textStyle="bold"></TextView>
 
             <TextView
                 android:id="@+id/tvValorSaldo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="140dp"
+                android:layout_marginStart="160dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/saldo_mes"
                 android:textColor="@color/colorPrimaryDark"
@@ -88,28 +90,47 @@
             app:layout_constraintTop_toBottomOf="@+id/layoutTop"
             tools:ignore="MissingConstraints">
 
+
+            <TextView
+                android:id="@+id/tvValorReceitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="280dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="100dp"
+                android:background="#FFFFFF"
+                android:text="@string/ValorReceita"
+                android:textColor="@color/colorBack"
+                android:textColorHint="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="normal"></TextView>
+
+
             <TextView
                 android:id="@+id/tvReceitas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="140dp"
+                android:layout_marginStart="80dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="-45dp"
                 android:text="@string/receitas"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorBack"
                 android:textSize="30sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="normal"></TextView>
+
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnAddReceitas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-45dp"
-                android:layout_marginLeft="280dp"
-                android:clickable="true"
+                android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@android:drawable/ic_input_add"
-                android:layout_centerInParent="true" />
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="-40dp"
+                android:clickable="true"
+                app:backgroundTint="#298A81"
+                app:fabSize="mini"
+                app:srcCompat="@android:drawable/ic_input_add" />
 
         </LinearLayout>
         <LinearLayout
@@ -122,16 +143,28 @@
             tools:ignore="MissingConstraints">
 
             <TextView
+                android:id="@+id/tvValorDespesas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="280dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/ValorDespesas"
+                android:textColor="@color/colorBack"
+                android:textSize="30sp"
+                android:textStyle="normal"></TextView>
+
+            <TextView
                 android:id="@+id/tvDespesas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="140dp"
+                android:layout_marginStart="80dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="-45dp"
                 android:text="@string/despesas"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorBack"
                 android:textSize="30sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="normal"></TextView>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnAddDespesas"
@@ -139,9 +172,11 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="280dp"
-                android:layout_marginTop="-45dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="-40dp"
                 android:clickable="true"
+                app:backgroundTint="#298A81"
+                app:fabSize="mini"
                 app:layout_anchorGravity="center|bottom"
                 app:srcCompat="@android:drawable/ic_delete" />
 
