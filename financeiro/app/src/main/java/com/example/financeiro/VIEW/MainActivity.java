@@ -27,5 +27,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null); //para deixar colorido icones
 
+
     }
 }
